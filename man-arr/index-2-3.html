@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Manipulating Arrays Solution</title>
+</head>
+
+<body>
+  <h1>Manipulating Arrays Solution</h1>
+  <p>Please load this file in VSCode and Chrome, and open the Console in Chrome Dev Tools.</p>
+  <p>Work through the challenges found inside the script tag in this document,
+    until the Console reports all tests passing.</p>
+
+  <script>
+    // In CHALLENGES 1-9 you will flesh out some functions.
+
+    // To do this, translate each 🧠 set of instructions into a working function.
+    // ❗ Functions are scaffolded for you, but some of them might be missing their parameters.
+    // ❗ Watch the Guided Project to learn proper debugging technique.
+    // ❗ The first challenge is _partially_ done for you:
+
+    // 👉 CHALLENGE 1
+    // 🧠 The function sumNumsFor takes an array of supposed numbers and adds them up, returning the total sum.
+    // 🧠 If the function receives an empty array, the returned value ought to be 0.
+    // 🧠 If an element in the array happens to not be a number, it is ignored.
+    // 🧠 However, if the number 13 is encountered, sumNumsFor returns the string "I'm too superstitious!"
+    // 🧠 Examples of usage:
+    // sumNumsFor([1, 2, 3]) // should return 6
+    // sumNumsFor([1, 2, 13]) // should return "I'm too superstitious!"
+    // ❗ Notes:
+    // 🧠 There are many ways to solve this, but practice using a for loop to iterate over the array.
+    // 🧠 As you have done in the past, declare a variable before you start looping, to accumulate the result.
+    function sumNumsFor(nums) {
+      let sum = 0;
+      
+    for (let i = 0; i < nums.length; i++) {
+      let numbers = nums[i]
+      if (numbers === 13) {
+      return "I'm too superstitious!";
+      } else if (typeof numbers === 'number') { 
+        sum +=numbers;
+      }  
+    }
+    return sum
+  }
+
+
+    // 👉 CHALLENGE 2
+    // 🧠 The function stripVowels takes a string, strips all lowcase vowel letters (a,e,i,o,u) from it and returns it.
+    // 🧠 Example of usage:
+    // stripVowels('Lady Gaga') // should return 'Ldy Gg'
+    // ❗ Notes:
+    // 🧠 There are many ways to solve this, but practice using a for loop to iterate over the characters of the string.
+    function stripVowels(str) {
+      let result = []
+      for (let i = 0 ; i < str.length ; i++) {
+        let splitStr = str.split('')
+        let char = splitStr[i]
+        if (char !== 'a' && char !== 'e' && char !== 'i' && char !== 'o' && char !== 'u' ) {
+            result[result.length] = char 
+      }
+    }
+    return result.join('')
+  }
+
+    // 👉 CHALLENGE 3
+    // 🧠 Reimplement sumNumsFor using a while loop instead of a for loop.
+    // 🧠 Examples of usage:
+    // sumNumsWhile([1, 2, 3]) // should return 6
+    // sumNumsWhile([1, 2, 13]) // should return "I'm too superstitious!"
+    function sumNumsWhile(nums) {
+      let sum = 0;
+      let i = 0;
+      while (i < nums.length) {
+        let numbers = nums[i]
+        if (numbers === 13) {
+        return "I'm too superstitious!";
+        } else if (typeof numbers === 'number') { 
+          sum +=numbers;
+        }  
+      i++
+      }
+      return sum  
+    }
+    
+
+    
+
+    // 👉 CHALLENGE 4
+    // 🧠 The function fightMonsters takes an integer (lifePoints) as its argument, and returns a string.
+    // 🧠 Inside the function there will be several rounds of monster-fighting.
+    // 🧠 We are alive to fight as long as lifePoints is bigger than zero.
+    // 🧠 In the first round, 1 point will be substracted from the initial lifePoints.
+    // 🧠 In the second round, 2 points will be substracted from the remaining lifePoints, and so on.
+    // 🧠 Eventually a string is returned from the function, in the format "You died in round 5".
+    // 🧠 That would be the round when you lost all lifePoints.
+    // 🧠 Examples of usage:
+    // fightMonsters(1) // should return "You died in round 1"
+    // fightMonsters(2) // should return "You died in round 2"
+    // fightMonsters(3) // should return "You died in round 2"
+    // fightMonsters(10) // should return "You died in round 4"
+    // ❗ Notes:
+    // 🧠 There are many ways to solve this, but practice using a while loop.
+    // 🧠 Work out using pen and paper how the round number and the lifePoints change after each round.
+    // 🧠 As long as there are lifePoints, decrease lifePoints by round number, and increase round number by one.
+    function fightMonsters(lifePoints) {
+      
+      let index = 1
+      while (lifePoints > 0){
+      lifePoints -= index 
+      if (lifePoints <= 0){
+        return `You died in round ${index}`
+      }
+      index++
+      
+      }
+    }
+      
+    
+
+    // 👉 CHALLENGE 5
+    // 🧠 The function findEvenNums takes an array of integers as its argument.
+    // 🧠 It returns a new array containing the even numbers found in the original array, in the same order.
+    // 🧠 Examples of usage:
+    // findEvenNums([0, 1, 2, 3, 4]) // should return [0, 2, 4]
+    // ❗ Notes:
+    // 🧠 Use any kind of loop you'd like and the push method to populate the array of even numbers.
+    function findEvenNums(arr) {
+     let result=[]
+      let index = 0
+        while (index < arr.length) {
+            let num = arr[index]
+            if (num % 2 === 0 ) {
+              result.push(num)  
+        }
+   index++
+      }
+      return result
+  }
+
+      
+    
+
+    
+
+    // 👉 CHALLENGE 6
+    // 🧠 The function separateAges takes an array of integers (ages) as its argument.
+    // 🧠 It returns a new array containing two elements, which happen to also be arrays.
+    // 🧠 The first subarray contains the ages under 21, and the second subarray the ages equal or older than 21.
+    // 🧠 Ages in the subarrays should appear in the same order they appeared in the original array.
+    // 🧠 Examples of usage:
+    // separateAges([31, 12, 25, 65, 84, 20]) // should return [[12, 20], [31, 25, 65, 84]]
+    function separateAges(arr) {
+      let result = []
+      let under = []
+      let over =[]
+      for(let index = 0; index < arr.length; index++){
+        let ages = arr[index]
+      if(ages < 21) {
+        under.push(ages)
+      } else if (ages >= 21) {
+        over.push(ages)
+      } 
+    }
+    result.push(under, over)
+    return result 
+  }
+
+    // 👉 CHALLENGE 7
+    // 🧠 The function headAndTail takes an array as its argument.
+    // 🧠 It returns an object with two properties: "head" and "tail".
+    // 🧠 The "head" prop contains the first element of the array.
+    // 🧠 The "tail" prop contains an array holding the elements of the array after the first one.
+    // 🧠 Examples of usage:
+    // headAndTail([1, 2, 3]) // should return { head: 1, tail: [2, 3] }
+    function headAndTail(arr) {
+      
+      let head = arr[0]
+      let tail = arr.slice(1)
+      return {head:head, tail:tail}
+     
+     
+    }
+
+    // 👉 CHALLENGE 8
+    // 🧠 The function nestedLoops takes an array of strings as its argument.
+    // 🧠 It returns a new array of strings which are the same as the original ones except that the vowels are capitalized.
+    // 🧠 Examples of usage:
+    // nestedLoops(['hello', 'goodbye']) // should return ['hEllO', 'gOOdbyE']
+    // ❗ Notes:
+    // 🧠 To capitalize a string you can use its toUpperCase method: "a".toUpperCase() returns "A"
+    function nestedLoops(strings) {
+      let result = []
+      for ( let i in strings) {
+        let word = strings[i]
+
+        let modified = ''
+
+        for (let i in word ) {
+          let char = word[i]
+
+          if (char === 'a' || char === 'e' || char === 'i' || char === 'o' || char === 'u' ) {
+            let upper = char.toUpperCase()
+            modified += upper
+          } else {
+            modified += char 
+          }
+        }
+        result.push(modified)
+      }
+      return result 
+    }
+     
+ 
+  
+    
+  
+  
+
+    
+
+    
+
+    // 👉 CHALLENGE 9
+    // 🧠 The function crazyTrimmer takes an array as its argument.
+    // 🧠 If the array has an even number of elements, the function returns it minus its last element.
+    // 🧠 If the number of elements is odd, the function returns the array minus its first and last elements.
+    // 🧠 Examples of usage:
+    // crazyTrimmer(['a', 'b', 'c']) // should return ['b']
+    // crazyTrimmer(['a', 'b', 'c', 'd']) // should return ['a', 'b', 'c']
+    // ❗ Notes:
+    // 🧠 Practice using pop and slice.
+    // 🧠 Note that pop modifies the original array in place and returns the "popped" element, whereas slice gives us a brand new array.
+    function crazyTrimmer(arr) {
+      
+      if(arr.length % 2 === 0) {
+       arr.pop()
+       return arr 
+      } else if (arr.length % 2 !== 0){
+        arr.pop()
+        arr.shift()
+        return arr
+      }
+  }
+
+
+    // 🧪 TESTS, do not work below this line
+    // 🧪 TESTS, do not work below this line
+    // 🧪 TESTS, do not work below this line
+    runTests('CHALLENGE 1 - sumNumsFor', sumNumsFor, [
+      [[[1, 2, 3]], 6],
+      [[[]], 0],
+      [[[1, 2, "x", 4]], 7],
+      [[[1, 2, 13, 3]], "I'm too superstitious!"],
+    ])
+    runTests('CHALLENGE 2 - stripVowels', stripVowels, [
+      [['aeiou'], ''],
+      [['xyz'], 'xyz'],
+      [['aeiouAEIOU'], 'AEIOU'],
+      [['precaution'], 'prctn'],
+    ])
+    runTests('CHALLENGE 3 - sumNumsWhile', sumNumsWhile, [
+      [[[1, 2, 3]], 6],
+      [[[]], 0],
+      [[[1, 2, "x", 4]], 7],
+      [[[1, 2, 13, 3]], "I'm too superstitious!"],
+    ])
+    runTests('CHALLENGE 4 - fightMonsters', fightMonsters, [
+      [[1], 'You died in round 1'],
+      [[2], 'You died in round 2'],
+      [[3], 'You died in round 2'],
+      [[10], 'You died in round 4'],
+      [[100], 'You died in round 14'],
+    ])
+    runTests('CHALLENGE 5 - findEvenNums', findEvenNums, [
+      [[[]], []],
+      [[[0]], [0]],
+      [[[1, 0, 5, 2, 4]], [0, 2, 4]],
+    ])
+    runTests('CHALLENGE 6 - separateAges', separateAges, [
+      [[[31, 12, 25, 65, 84, 20]], [[12, 20], [31, 25, 65, 84]]],
+      [[[1, 2, 3]], [[1, 2, 3], []]],
+      [[[21, 22, 23]], [[], [21, 22, 23]]],
+    ])
+    runTests('CHALLENGE 7 - headAndTail', headAndTail, [
+      [[[1, 2, 3]], { head: 1, tail: [2, 3] }],
+      [[["a", "b", "c"]], { head: "a", tail: ["b", "c"] }],
+    ])
+    runTests('CHALLENGE 8 - nestedLoops', nestedLoops, [
+      [[['aeiou', 'xyz']], ['AEIOU', 'xyz']],
+      [[['foo', 'bar', 'baz']], ['fOO', 'bAr', 'bAz']],
+    ])
+    runTests('CHALLENGE 9 - crazyTrimmer', crazyTrimmer, [
+      [[[1, 2, 3]], [2]],
+      [[[1, 2]], [1]],
+      [[[1, 2, 3, 4]], [1, 2, 3]],
+      [[[1, 2, 3, 4, 5]], [2, 3, 4]],
+    ])
+    function runTests(testName, func, tests) {
+      let results = []
+      tests.forEach(test => {
+        const argsList = test[0]
+        const expected = JSON.stringify(test[1])
+        const actual = JSON.stringify(func.apply(null, JSON.parse(JSON.stringify(argsList))))
+        results.push([argsList, expected, actual])
+      })
+      console.log('\n' + testName)
+      if (results.every(result => result[1] === result[2])) console.log('\t✅ All tests pass')
+      else results.forEach((result, idx) => {
+        if (result[1] === result[2]) console.log(`\t✅ Test ${idx + 1} passes`)
+        else console.log(`\t❌ Test ${idx + 1} fails: ${func.name}(${result[0]
+          .map(JSON.stringify)}) should return ${result[1]} but returns ${result[2]}`)
+      })
+    }
+  </script>
+</body>
+
+</html>
